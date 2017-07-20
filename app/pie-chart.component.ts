@@ -1,5 +1,7 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
+/// <reference path="../../typings/modules/d3/index.d.ts" />
 
+import { Component, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
+//import { IData } from './data.interface';
 import { DataService } from './data.service';
 import { Http, HttpModule, Response, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs';
@@ -21,6 +23,7 @@ export class PieChartComponent implements AfterViewInit {
     private height: number;
     private radius: number;
     private htmlElement: HTMLElement;
+    //private pieData: IData[];
     private pieData: [];
 
     constructor(private dataService: DataService) { }
@@ -29,8 +32,7 @@ export class PieChartComponent implements AfterViewInit {
         this.htmlElement = this.element.nativeElement;
         this.host = D3.select(this.htmlElement);
         this.dataService.getData().subscribe(data => {
-            //this.pieData = data.graph_data;
-            this.pieData = data;
+            this.pieData = data.graph_data;
             this.setup();
             this.buildSVG();
             this.buildPie();

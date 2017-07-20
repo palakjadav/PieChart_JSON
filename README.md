@@ -5,6 +5,7 @@
 ## Download the repo and run it with the following commands:
 
 ```npm install
-npm run d3-typings
+npm run 
+d3-typings
 npm start
 ```
